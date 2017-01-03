@@ -256,8 +256,8 @@ bevstat = Bevstat(age_data, additional_stats, 1971)
 ###############################################################################################
 ###############################################################################################
 
-hovertool_births = HoverTool(tooltips=[("Birth surplus", "@y"),("Jahr","@x")])
-hovertool_migration = HoverTool(tooltips=[("Net migration", "@y"),("Jahr","@x")])
+hovertool_births = HoverTool(tooltips=[("Birth surplus", "@y"),("Year","@x")])
+hovertool_migration = HoverTool(tooltips=[("Net migration", "@y"),("Year","@x")])
 
 plot = figure(plot_height=400, plot_width=600, title="Total resident population (Switzerland): 2010",
               tools=["save", "box_select"],
