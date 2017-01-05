@@ -5,7 +5,7 @@ from bokeh.layouts import row, column, widgetbox, layout
 from bokeh.models import ColumnDataSource, formatters, BoxAnnotation, BoxSelectTool, HoverTool, Span, Label, Button
 from bokeh.models.widgets import Slider, PreText, RadioGroup, Icon
 from bokeh.plotting import figure
-from functools import lru_cache, partial
+from functools import lru_cache
 import timeit
 
 #Szenariodaten sind ab und mit 2016 abgebildet, die Daten aus den "ch" Files sind eqvl. zu den "ch"-Statistiken + "au" Statistiken
@@ -49,11 +49,6 @@ for key in ("historical_ch","historical_au","low_ch","low_au","ref_ch","ref_au",
 
 age_groups = [k for k in range(101)]
 x_scatter = np.zeros(101)
-labor_age_min = 18
-labor_age_max = 67
-
-###############################################################################################
-###############################################################################################
 
 
 class Bevstat():

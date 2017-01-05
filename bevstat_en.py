@@ -1,4 +1,3 @@
-#!/bin/python3.5
 
 import numpy as np
 from os import path
@@ -40,8 +39,6 @@ for key in ("historical_ch","historical_au","low_ch","low_au","ref_ch","ref_au",
 age_groups = [k for k in range(101)]
 x_scatter = np.zeros(101)
 
-###############################################################################################
-###############################################################################################
 
 
 class Bevstat():
