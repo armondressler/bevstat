@@ -3,7 +3,7 @@ from os import path
 from bokeh.io import curdoc
 from bokeh.layouts import row, column, widgetbox, layout
 from bokeh.models import ColumnDataSource, formatters, BoxAnnotation, BoxSelectTool, HoverTool, Span, Label, Button
-from bokeh.models.widgets import Slider, PreText, RadioGroup, Icon
+from bokeh.models.widgets import Slider, PreText, RadioGroup
 from bokeh.plotting import figure
 from functools import lru_cache
 import timeit
@@ -99,8 +99,9 @@ class Bevstat():
         self.offset_slider = Slider(title=None, value=0, start=0, end=self.historical_years + self.predicted_years - 1,
                                     step=1, sizing_mode="scale_height", orientation="horizontal")
         #changing icons on the fly diesnt seem to work
-        self.icon_arrow = Icon(icon_name="arrow-circle-up")
-        self.animate_button = Button(label="Animation", width=70, icon=self.icon_arrow)
+        #Icons removed in bokeh 0.12.4
+        #self.icon_arrow = Icon(icon_name="arrow-circle-up")
+        self.animate_button = Button(label="Animation", width=70)
         self.animate_button.on_click(self.animation_button_click)
 
         for origin in ("ch", "au"):
