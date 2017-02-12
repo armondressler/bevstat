@@ -1,5 +1,5 @@
 import numpy as np
-m os import path
+from os import path
 from bokeh.io import curdoc
 from bokeh.layouts import row, column, widgetbox, layout
 from bokeh.models import ColumnDataSource, formatters, BoxAnnotation, BoxSelectTool, HoverTool, Span, Label, Button
