@@ -1,5 +1,5 @@
 import numpy as np
-from os import path
+m os import path
 from bokeh.io import curdoc
 from bokeh.layouts import row, column, widgetbox, layout
 from bokeh.models import ColumnDataSource, formatters, BoxAnnotation, BoxSelectTool, HoverTool, Span, Label, Button
@@ -10,7 +10,7 @@ import timeit
 
 #Szenariodaten sind ab und mit 2016 abgebildet, die Daten aus den "ch" Files sind eqvl. zu den "ch"-Statistiken + "au" Statistiken
 #Doc:
-#"Jahr"  "Lebendgeburten" "Todesfälle"    "Einwanderungen"        "Auswanderungen"        "Erwerb des Schweizer Bürgerrechts"
+#"Jahr"  "Lebendgeburten" "Todesfaelle"    "Einwanderungen"        "Auswanderungen"        "Erwerb des Schweizer Buergerrechts"
 #Source: https://www.bfs.admin.ch/bfsstatic/dam/assets/290789/master
 
 #TODO:
@@ -176,7 +176,7 @@ class Bevstat():
 
     def update_dependency_text(self, dep, dep_min, dep_maj):
         self.dependency_ratio_textfield.update(
-            text="Abhängigenquotient: {dependency_ratio:.2f} \n"
+            text="Abhaengigenquotient: {dependency_ratio:.2f} \n"
                  "\t- Jugendquotient: {dependency_ratio_minor:.2f} bei Eintrittsalter: {working_age}\n"
                  "\t- Altersquotient: {dependency_ratio_major:.2f} bei Rentenalter: {retirement_age}".format(
                 retirement_age=self.labor_age_max,
@@ -193,13 +193,13 @@ class Bevstat():
                sum(self.age_data_source['f_au'].data['display']) * -1
 
     def update_population_text(self, m_ch_sum, f_ch_sum, m_au_sum, f_au_sum):
-        self.total_population_textfield.update(text="Gesamtbevölkerung: {total_pop:,}\n"
-                                                    "\t- Männlich: {total_pop_m:,}\n"
+        self.total_population_textfield.update(text="Gesamtbevoelkerung: {total_pop:,}\n"
+                                                    "\t- Maennlich: {total_pop_m:,}\n"
                                                     "\t\t- Schweizer: {total_pop_m_ch:,}\n"
-                                                    "\t\t- Ausländer: {total_pop_m_au:,}\n"
+                                                    "\t\t- Auslaender: {total_pop_m_au:,}\n"
                                                     "\t- Weiblich: {total_pop_f:,}\n"
                                                     "\t\t- Schweizerinnen: {total_pop_f_ch:,}\n"
-                                                    "\t\t- Ausländerinnen: {total_pop_f_au:,}".format(
+                                                    "\t\t- Auslaenderinnen: {total_pop_f_au:,}".format(
             total_pop=m_ch_sum + f_ch_sum,
             total_pop_m=m_ch_sum,
             total_pop_m_ch=m_ch_sum - m_au_sum,
@@ -254,7 +254,7 @@ class Bevstat():
                                                  self.radio_active)
         self.update_dependency_text(*deptext_tuple)
         self.update_current_year_box(self.offset_slider.value)
-        plot.title.text = "Ständige Wohnbevölkerung: {}".format(str(self.first_recorded_year + self.offset_slider.value))
+        plot.title.text = "Staendige Wohnbevoelkerung: {}".format(str(self.first_recorded_year + self.offset_slider.value))
 
 
 
@@ -264,17 +264,17 @@ bevstat = Bevstat(age_data, additional_stats, 1971)
 ###############################################################################################
 ###############################################################################################
 
-#TODO: years als 2er Schritt (Jahr 0 = 1,2, Jahr 1 = 3,4 , damit floats entfernt werden können
+#TODO: years als 2er Schritt (Jahr 0 = 1,2, Jahr 1 = 3,4 , damit floats entfernt werden koennen
 
-hovertool_births = HoverTool(tooltips=[("Geburtenüberschuss", "@y"),("Jahr","@x")])
+hovertool_births = HoverTool(tooltips=[("Geburtenueberschuss", "@y"),("Jahr","@x")])
 hovertool_migration = HoverTool(tooltips=[("Wanderungssaldo", "@y"),("Jahr","@x")])
 
-plot = figure(plot_height=400, plot_width=600, title="Ständige Wohnbevölkerung Schweiz: 2010",
+plot = figure(plot_height=400, plot_width=600, title="Staendige Wohnbevoelkerung Schweiz: 2010",
               tools=["save", "box_select"],
               x_range=[-85000, 85000],
               y_range=[0, 101])
 
-plot_birth = figure(plot_height=400, plot_width=600, title="Geburtenüberschuss",
+plot_birth = figure(plot_height=400, plot_width=600, title="Geburtenueberschuss",
               tools=[hovertool_births],
               x_range=[bevstat.display_stats["ch"][0][0],bevstat.display_stats["ch"][0][-1]],
               y_range=[-100000, 100000])
@@ -306,13 +306,13 @@ hovertool_births.renderers.append(plot_birth.line(x=np.array(bevstat.display_sta
                      y=bevstat.display_stats["ch"][1]+bevstat.display_stats["ch"][2],
                      line_width=4,
                      color="blue",
-                     legend="Geburtenüberschuss (Schweizer)"))
+                     legend="Geburtenueberschuss (Schweizer)"))
 
 hovertool_births.renderers.append(plot_birth.line(x=np.array(bevstat.display_stats["au"][0]),
                      y=bevstat.display_stats["au"][1]+bevstat.display_stats["au"][2],
                      line_width=4,
                      color="red",
-                     legend="Geburtenüberschuss (Ausländer)"))
+                     legend="Geburtenueberschuss (Auslaender)"))
 
 
 for stat_type in ("migration","immigration"):
@@ -337,7 +337,7 @@ hovertool_migration.renderers.append(plot_migration.line(x=np.array(bevstat.disp
                      y=bevstat.display_stats["au"][3]+bevstat.display_stats["au"][4],
                      line_width=4,
                      color="red",
-                     legend="Migrationssaldo (Ausländer)"))
+                     legend="Migrationssaldo (Auslaender)"))
 
 #only scatterplots can be selectec with boxselect
 #invisible scatter along x=0
@@ -363,14 +363,14 @@ annotation_female = Label(x=85, y=35, x_units='screen', y_units='screen',
                  background_fill_color='white', background_fill_alpha=0.7)
 
 annotation_male = Label(x=495, y=35, x_units='screen', y_units='screen',
-                 text='Männlich', render_mode='css',
+                 text='Maennlich', render_mode='css',
                  border_line_color='black', border_line_alpha=0.4,
                  background_fill_color='white', background_fill_alpha=0.7)
 
 plot.yaxis.axis_label = "Alter"
 plot.xaxis.formatter = formatters.NumeralTickFormatter(format="(0,0)")
 
-plot_birth.yaxis.axis_label = "Todesfälle (-)  Geburten (+)"
+plot_birth.yaxis.axis_label = "Todesfaelle (-)  Geburten (+)"
 plot_birth.yaxis.formatter = formatters.PrintfTickFormatter(format="%d")
 plot_birth.xgrid.minor_grid_line_alpha = 0.5
 
@@ -386,7 +386,7 @@ prediction_radio_group = RadioGroup(
 
 
 plot.hbar(right='display', y='y', source=bevstat.age_data_source["m_ch"], height=0.5, line_width=3, line_alpha=0.4, color="blue", legend="Schweizer")
-plot.hbar(right='display', y='y', source=bevstat.age_data_source["m_au"], height=0.5, line_width=3, line_alpha=0.4, color="red", legend="Ausländer")
+plot.hbar(right='display', y='y', source=bevstat.age_data_source["m_au"], height=0.5, line_width=3, line_alpha=0.4, color="red", legend="Auslaender")
 plot.hbar(right='display', y='y', source=bevstat.age_data_source["f_ch"], height=0.5, line_width=3, line_alpha=0.4, color="blue")
 plot.hbar(right='display', y='y', source=bevstat.age_data_source["f_au"], height=0.5, line_width=3, line_alpha=0.4, color="red")
 
@@ -411,7 +411,7 @@ inputs = widgetbox(bevstat.dependency_ratio_textfield, bevstat.total_population_
 
 curdoc().add_root(column(row(plot, column(inputs,bevstat.offset_slider, bevstat.animate_button)),
                          row(plot_birth, plot_migration)))
-curdoc().title = "Wohnbevölkerung der Schweiz, Aufteilung nach Alter und Geschlecht"
+curdoc().title = "Wohnbevoelkerung der Schweiz, Aufteilung nach Alter und Geschlecht"
 
 #disable bokeh logo on the plots, provide reference on page
 for my_plot in [plot_birth, plot_migration]:
