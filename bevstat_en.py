@@ -340,12 +340,12 @@ plot_migration.legend.location = "bottom_left"
 m_f_separator = Span(location=0, dimension='height', line_dash='dashed', line_color='black', line_width=1)
 
 annotation_female = Label(x=85, y=35, x_units='screen', y_units='screen',
-                 text='Weiblich', render_mode='css',
+                 text='Female', render_mode='css',
                  border_line_color='black', border_line_alpha=0.4,
                  background_fill_color='white', background_fill_alpha=0.7)
 
 annotation_male = Label(x=495, y=35, x_units='screen', y_units='screen',
-                 text='Männlich', render_mode='css',
+                 text='Male', render_mode='css',
                  border_line_color='black', border_line_alpha=0.4,
                  background_fill_color='white', background_fill_alpha=0.7)
 
