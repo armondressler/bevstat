@@ -298,6 +298,7 @@ for stat_type in ("births","deaths"):
                         source=bevstat.additional_stats_source[key],
                         bottom=0,
                         width=1,#0.5,
+                        height=1,
                         alpha=0.1,
                         color=vbar_color)
 
